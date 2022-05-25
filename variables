@@ -1,0 +1,7 @@
+FILES="vimrc zshrc zprofile bashrc bash_profile xinitrc xbindkeysrc"
+
+NEWSBOAT_FILES="config urls"
+
+CONFIG_FILES="i3/config kitty/kitty.conf kitty/current-theme.conf mpv/mpv.conf picom.conf polybar redshift/redshift.conf rofi/config.rasi"
+
+DIRECTORIES="newsboat kitty mpv redshift rofi i3"
