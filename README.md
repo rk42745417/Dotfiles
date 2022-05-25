@@ -25,22 +25,21 @@
 | pipewire and pipewire-pulse | sound control(Using pulseaudio) |
 | scrot | screenshot |
 
-[rofi themes](https://github.com/adi1090x/rofi)
-
+[rofi themes](https://github.com/adi1090x/rofi)  
 [polybar themes](https://github.com/adi1090x/polybar-themes)
 
 ## Run the install script
 It should be `$ ./install.sh` but I'm too lazy to write it for now.
 
 ## Misc
-`:Plug Install` in vim
+`:Plug Install` in vim  
 `$ zplug install`
 
 # Update
 ## Run the update script
 `$ ./update.sh`
 ## Misc
-`:Plug Upgrade` in vim
-`:Plug Update` in vim
-`$ zplug update`
+`:Plug Upgrade` in vim  
+`:Plug Update` in vim  
+`$ zplug update`  
 `$ zplug clean`
