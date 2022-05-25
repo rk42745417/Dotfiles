@@ -34,12 +34,3 @@ It should be `$ ./install.sh` but I'm too lazy to write it for now.
 ## Misc
 `:Plug Install` in vim  
 `$ zplug install`
-
-# Update
-## Run the update script
-`$ ./update.sh`
-## Misc
-`:Plug Upgrade` in vim  
-`:Plug Update` in vim  
-`$ zplug update`  
-`$ zplug clean`
