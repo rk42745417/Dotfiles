@@ -1,3 +1,5 @@
+![](screenshot.png)
+
 # System
 * Distribution: ArchLinux
 * Kernel: 5.17.9-arch1-1
@@ -25,8 +27,10 @@
 | pipewire and pipewire-pulse | sound control(Using pulseaudio) |
 | scrot | screenshot |
 
+I have installed but I don't know if it is necessary:  
 [rofi themes](https://github.com/adi1090x/rofi)  
 [polybar themes](https://github.com/adi1090x/polybar-themes)
+[polybar spotify](https://github.com/PrayagS/polybar-spotify)
 
 ## Run the install script
 It should be `$ ./install.sh` but I'm too lazy to write it for now.
