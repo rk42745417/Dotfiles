@@ -29,7 +29,7 @@
 
 I have installed but I don't know if it is necessary:  
 [rofi themes](https://github.com/adi1090x/rofi)  
-[polybar themes](https://github.com/adi1090x/polybar-themes)
+[polybar themes](https://github.com/adi1090x/polybar-themes)  
 [polybar spotify](https://github.com/PrayagS/polybar-spotify)
 
 ## Run the install script
