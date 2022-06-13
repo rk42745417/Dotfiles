@@ -49,7 +49,7 @@ let g:cpp_function_highlight = 0
 let g:vim_markdown_math = 1
 
 " keymaps
-autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -fsanitize=undefined -fsanitize=address <CR>
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT <CR>
 autocmd filetype cpp nnoremap <F10> :!./%:r <CR>
 autocmd filetype cpp nnoremap <F11> :!./%:r < input.txt > output.txt <CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
