@@ -79,7 +79,7 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 let g:NERDTreeWinSize=20
 
 " Refresh defaut code
-autocmd filetype cpp command! New execute "%d|r ~/Programming/template/default.cpp|1d|41"
+autocmd filetype cpp command! New execute "%d|0r ~/Programming/template/default.cpp|62"
 
 " encoding
 set fileencodings=ucs-bom,utf-8,cp932,gb18030,gbk,gb2312,cp936
