@@ -24,6 +24,8 @@ call plug#end()
 set cb^=unnamedplus,unnamed
 set ts=4 " tabstop=4
 set sw=4 " shiftwidth=4
+set sts=4 " softtabstop=4
+set et " expandtab
 set ls=2 " laststatus=2
 set cul " cursorline
 set ai " autoindent
@@ -33,7 +35,6 @@ set hls " hlsearch
 set rnu " relativenumber
 set showcmd
 syntax enable
-" colo 
 
 " additional configurations
 colo molokayo
@@ -49,18 +50,20 @@ let g:cpp_function_highlight = 0
 let g:vim_markdown_math = 1
 
 " keymaps
-autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT <CR>
-autocmd filetype cpp nnoremap <F10> :!./%:r <CR>
-autocmd filetype cpp nnoremap <F11> :!./%:r < input.txt > output.txt <CR>
-autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
 
+" Cpp keymaps
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT <CR>
+autocmd filetype cpp nnoremap <F10> :!./%:r <CR>
+autocmd filetype cpp nnoremap <F11> :!./%:r < input.txt > output.txt <CR>
+autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
+
 " latex keymaps
 autocmd filetype tex nnoremap <F9> :w <bar> :!xelatex % <CR>
-autocmd filetype tex nnoremap <F10> :!okular %:r.pdf <CR>
+autocmd filetype tex nnoremap <F10> :!zathura %:r.pdf <CR>
 
 " Set true color
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -80,7 +83,7 @@ let g:NERDTreeWinSize=20
 
 " Refresh defaut code
 let DefaultCodePath="~/Programming/template/default.cpp"
-let LineNumber=62
+let LineNumber=73
 autocmd filetype cpp command! New execute "%d|0r " . DefaultCodePath . "|$|d|" . LineNumber . "|redraw"
 
 " encoding
