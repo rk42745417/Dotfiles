@@ -32,6 +32,7 @@ set ai " autoindent
 set is " incsearch
 filetype plugin indent on
 set hls " hlsearch
+set nu " number
 set rnu " relativenumber
 set showcmd
 syntax enable
@@ -56,14 +57,20 @@ inoremap {{ {
 inoremap {} {}
 
 " Cpp keymaps
-autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT <CR>
-autocmd filetype cpp nnoremap <F10> :!./%:r <CR>
-autocmd filetype cpp nnoremap <F11> :!./%:r < input.txt > output.txt <CR>
+autocmd filetype cpp nnoremap <F8> :w <bar> !g++ -std=c++17 % -o %:r -O2<CR>
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT<CR>
+autocmd filetype cpp nnoremap <F10> :!./%:r<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 
+" C keymaps
+autocmd filetype c nnoremap <F8> :w <bar> !gcc -std=c99 % -o %:r -O2<CR>
+autocmd filetype c nnoremap <F9> :w <bar> !gcc -std=c99 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT<CR>
+autocmd filetype c nnoremap <F10> :!./%:r<CR>
+autocmd filetype c nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
+
 " latex keymaps
-autocmd filetype tex nnoremap <F9> :w <bar> :!xelatex % <CR>
-autocmd filetype tex nnoremap <F10> :!zathura %:r.pdf <CR>
+autocmd filetype tex nnoremap <F9> :w <bar> :!xelatex %<CR>
+autocmd filetype tex nnoremap <F10> :!zathura %:r.pdf<CR>
 
 " Set true color
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"

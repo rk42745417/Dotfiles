@@ -53,7 +53,7 @@ source ~/.zplug/init.zsh
 # Install plugins
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
+# zplug "plugins/npm", from:oh-my-zsh
 zplug "chrissicool/zsh-256color"
 # zplug "unixorn/git-extra-commands"
 zplug "zsh-users/zsh-autosuggestions"

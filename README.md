@@ -2,7 +2,7 @@
 
 # System
 * Distribution: ArchLinux
-* Kernel: 5.17.9-arch1-1
+* Kernel: 5.19.6-zen1-1-zen
 * Window Manager: i3-gap
 * Compositor: picom
 * Status Bar: polybar
