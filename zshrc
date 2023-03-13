@@ -37,6 +37,18 @@ alias difi='diff'
 alias mkdri='mkdir'
 alias rmdri='rmdir'
 
+export EDITOR=vim
+rangercd () {
+    tmp="$(mktemp)"
+    ranger --choosedir="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+} # source: https://www.reddit.com/r/ranger/comments/bngtqt/comment/ig8ux7c
+alias ranger="rangercd"
+
 # Unlimited stack size
 # For programming, especially Competitive Programming
 ulimit -s unlimited
@@ -62,7 +74,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "plugins/dirhistory", from:oh-my-zsh
 zplug "ael-code/zsh-colored-man-pages"
 zplug "jedahan/geometry-hydrate"
-zplug "Bhupesh-V/ugit"
+# zplug "Bhupesh-V/ugit"
 zplug "MichaelAquilina/zsh-you-should-use"
 
 # colorls
@@ -71,7 +83,7 @@ export PATH="$PATH:$GEM_HOME/bin"
 source $(dirname $(gem which colorls))/tab_complete.sh
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -79,7 +91,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 # plugin configurations
 GEOMETRY_PLUGIN_HYDRATE_INTERVAL=40  # interval in minutes

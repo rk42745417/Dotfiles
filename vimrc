@@ -1,4 +1,33 @@
 set nocompatible
+let g:ale_completion_enabled = 1
+
+" Issue https://github.com/vim/vim/issues/11821
+if &term =~ 'kitty'
+	" <PageUp>
+	let &t_kP = "\<ESC>[5;*~"
+	" <PageDown>
+	let &t_kN = "\<ESC>[6;*~"
+	" <Del>
+	let &t_kD = "\<ESC>[3;*~"
+	" <Insert>
+	let &t_kI = "\<ESC>[2;*~"
+	" <F5>
+	let &t_k5 = "\<ESC>[15;*~"
+	" <F6>
+	let &t_k6 = "\<ESC>[17;*~"
+	" <F7>
+	let &t_k7 = "\<ESC>[18;*~"
+	" <F8>
+	let &t_k8 = "\<ESC>[19;*~"
+	" <F9>
+	let &t_k9 = "\<ESC>[20;*~"
+	" <F10>
+	let &t_k; = "\<ESC>[21;*~"
+	" <F11>
+	let &t_F1 = "\<ESC>[23;*~"
+	" <F12>
+	let &t_F2 = "\<ESC>[24;*~"
+endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -6,6 +35,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'yuttie/comfortable-motion.vim'
 " Plug 'itchyny/lightline.vim'
 " Plug 'rlue/vim-barbaric'
+Plug 'sevko/vim-nand2tetris-syntax'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -18,6 +48,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'tribela/vim-transparent'
+" Plug 'dense-analysis/ale'
 call plug#end()
 
 " basic configurations
@@ -64,13 +95,16 @@ autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\
 
 " C keymaps
 autocmd filetype c nnoremap <F8> :w <bar> !gcc -std=c99 % -o %:r -O2<CR>
-autocmd filetype c nnoremap <F9> :w <bar> !gcc -std=c99 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT<CR>
+autocmd filetype c nnoremap <F9> :w <bar> !gcc -std=c11 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT<CR>
 autocmd filetype c nnoremap <F10> :!./%:r<CR>
 autocmd filetype c nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
 
 " latex keymaps
-autocmd filetype tex nnoremap <F9> :w <bar> :!xelatex %<CR>
+autocmd filetype tex nnoremap <F9> :w <bar> !xelatex --shell-escape %<CR>
 autocmd filetype tex nnoremap <F10> :!zathura %:r.pdf<CR>
+
+" python keymaps
+autocmd filetype py nnoremap <F9> :w <bar> !python3 %<CR>
 
 " Set true color
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -90,7 +124,7 @@ let g:NERDTreeWinSize=20
 
 " Refresh defaut code
 let DefaultCodePath="~/Programming/template/default.cpp"
-let LineNumber=73
+let LineNumber=72
 autocmd filetype cpp command! New execute "%d|0r " . DefaultCodePath . "|$|d|" . LineNumber . "|redraw"
 
 " encoding
