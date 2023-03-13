@@ -20,5 +20,5 @@ done
 
 echo "Updating files under ~/.config"
 for f in $CONFIG_FILES; do
-	cp ~/.config/$f $f -r
+	cp ~/.config/$f $f -rT
 done
