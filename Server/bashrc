@@ -1,0 +1,48 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+shopt -s histappend
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTIGNORE='ls:bg:fg:history'
+HISTTIMEFORMAT='%F %T '
+
+bind '"^[j" history-search-forward'
+bind '"^[k" history-search-backward'
+
+alias ls='ls --color=auto'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias rm='rm -i'
+
+__prompt_command() {
+    local EXIT="$?"
+    PS1='\e[0m[\e[1;34m\u'
+
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+        PS1+="@$(hostname)"
+    fi
+
+    PS1+=' \e[0;36m\t \e[1;32m\W'
+
+    local branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')"
+    PS1+=" \e[1;33m$branch\e[0m]"
+
+    if [[ $EXIT -eq 0 ]]
+    then
+        PS1+="\$"
+    else
+        PS1+="\e[0;31m\$\e[0m"
+    fi
+
+    PS1+=" "
+}
+
+PROMPT_COMMAND=__prompt_command
+
+export EDITOR='vim'
+export PATH="~/.local/bin:$PATH"
