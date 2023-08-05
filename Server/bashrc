@@ -11,8 +11,8 @@ HISTSIZE=1000000
 HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 
-bind '"^[j" history-search-forward'
-bind '"^[k" history-search-backward'
+bind '"\ej": history-search-forward'
+bind '"\ek": history-search-backward'
 
 alias ls='ls --color=auto'
 alias diff='diff --color=auto'
