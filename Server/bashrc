@@ -24,7 +24,7 @@ __prompt_command() {
     PS1='\e[0m[\e[1;34m\u'
 
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-        PS1+="@$(hostname)"
+        PS1+="@$(hostnamectl hostname)"
     fi
 
     PS1+=' \e[0;36m\t \e[1;32m\W'
