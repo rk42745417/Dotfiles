@@ -18,8 +18,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=100
-SAVEHIST=100
+HISTSIZE=1000000
+SAVEHIST=1000000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
@@ -29,15 +29,21 @@ bindkey -e
 alias ls='colorls'
 alias lc='colorls -lA --sd'
 alias diff='diff --color=auto'
+alias grep='grep --color=auto'
 alias rm='rm -i'
+alias ssh='TERM=xterm ssh'
 
 alias sl='ls'
 alias vm='mv'
 alias difi='diff'
 alias mkdri='mkdir'
 alias rmdri='rmdir'
+bindkey "^[j" history-search-forward
+bindkey "^[k" history-search-backward
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
 
-export EDITOR=vim
+export EDITOR='nvim'
 rangercd () {
     tmp="$(mktemp)"
     ranger --choosedir="$tmp" "$@"
@@ -48,10 +54,6 @@ rangercd () {
     fi
 } # source: https://www.reddit.com/r/ranger/comments/bngtqt/comment/ig8ux7c
 alias ranger="rangercd"
-
-# Unlimited stack size
-# For programming, especially Competitive Programming
-ulimit -s unlimited
 
 # Turn off all beeps
 unsetopt BEEP

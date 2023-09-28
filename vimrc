@@ -4,8 +4,7 @@ let g:ale_completion_enabled = 1
 " Issue https://github.com/vim/vim/issues/11821
 if &term =~ 'kitty'
 	" <PageUp>
-	let &t_kP = "\<ESC>[5;*~"
-	" <PageDown>
+	let &t_kP = "\<ESC>[5;*~" " <PageDown>
 	let &t_kN = "\<ESC>[6;*~"
 	" <Del>
 	let &t_kD = "\<ESC>[3;*~"
@@ -34,9 +33,11 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'yuttie/comfortable-motion.vim'
 " Plug 'itchyny/lightline.vim'
-" Plug 'rlue/vim-barbaric'
+Plug 'lilydjwg/fcitx.vim'
+Plug 'jasonccox/vim-wayland-clipboard'
 Plug 'sevko/vim-nand2tetris-syntax'
 
+" Plug 'ycm-core/YouCompleteMe'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'
@@ -54,8 +55,8 @@ call plug#end()
 " basic configurations
 set cb^=unnamedplus,unnamed
 set ts=4 " tabstop=4
-set sw=4 " shiftwidth=4
-set sts=4 " softtabstop=4
+set sw=0 " shiftwidth=tabstop
+set sts=-1 " softtabstop=shiftwidth
 set et " expandtab
 set ls=2 " laststatus=2
 set cul " cursorline
@@ -80,6 +81,10 @@ let g:airline_powerline_fonts = 1
 let g:cpp_function_highlight = 0
 " vim markdown settings
 let g:vim_markdown_math = 1
+
+autocmd filetype javascript set tabstop=2 |
+            \ set softtabstop=2 |
+            \ set shiftwidth=2
 
 " keymaps
 inoremap { {}<Left>
@@ -124,7 +129,7 @@ let g:NERDTreeWinSize=20
 
 " Refresh defaut code
 let DefaultCodePath="~/Programming/template/default.cpp"
-let LineNumber=72
+let LineNumber=73
 autocmd filetype cpp command! New execute "%d|0r " . DefaultCodePath . "|$|d|" . LineNumber . "|redraw"
 
 " encoding
