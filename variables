@@ -1,4 +1,4 @@
-FILES="vimrc zshrc zprofile bashrc bash_profile"
+FILES="vimrc zshrc zprofile bashrc bash_profile gitconfig"
 
 NEWSBOAT_FILES=""
 
