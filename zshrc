@@ -13,6 +13,8 @@ zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' max-errors 2
 zstyle :compinstall filename '/home/jikuai/.zshrc'
 
+fpath+=~/.zfunc
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -25,23 +27,29 @@ bindkey -e
 
 # ****************************************************************************************************
 
+alias tmux="TERM=xterm-256color tmux"
+export PATH=$HOME/Packages/image/bin:$PATH
+source ~/Util/adjust_time.sh
+
 # Personal settings
 alias ls='colorls'
 alias lc='colorls -lA --sd'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias rm='rm -i'
-alias ssh='TERM=xterm ssh'
+alias mv='mv -i'
+alias find='fd'
 
 alias sl='ls'
 alias vm='mv'
 alias difi='diff'
 alias mkdri='mkdir'
 alias rmdri='rmdir'
-bindkey "^[j" history-search-forward
-bindkey "^[k" history-search-backward
+bindkey "^[j" history-beginning-search-forward
+bindkey "^[k" history-beginning-search-backward
 setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
+alias history='history -E'
 
 export EDITOR='nvim'
 rangercd () {
@@ -82,7 +90,7 @@ zplug "MichaelAquilina/zsh-you-should-use"
 # colorls
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
-source $(dirname $(gem which colorls))/tab_complete.sh
+# source $(dirname $(gem which colorls))/tab_complete.sh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
@@ -98,7 +106,14 @@ zplug load
 # plugin configurations
 GEOMETRY_PLUGIN_HYDRATE_INTERVAL=40  # interval in minutes
 
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # ****************************************************************************************************
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
