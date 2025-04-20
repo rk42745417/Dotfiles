@@ -22,3 +22,6 @@ echo "Updating files under ~/.config"
 for f in $CONFIG_FILES; do
 	cp "$HOME/.config/$f" "$f" -rT
 done
+
+echo "Updating files in ~/.bin"
+cp "$HOME/.bin" "bin" -rT
