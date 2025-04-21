@@ -1,3 +1,5 @@
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,13 +9,16 @@ fi
 
 # ****************************************************************************************************
 
+
+
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' completer _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' original true
 zstyle :compinstall filename '/home/jikuai/.zshrc'
-
-fpath+=~/.zfunc
 
 autoload -Uz compinit
 compinit
@@ -28,8 +33,9 @@ bindkey -e
 # ****************************************************************************************************
 
 alias tmux="TERM=xterm-256color tmux"
-export PATH=$HOME/Packages/image/bin:$PATH
-source ~/Util/adjust_time.sh
+export PATH="$HOME/Packages/image/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+# source ~/Util/adjust_time.sh
 
 # Personal settings
 alias ls='colorls'
@@ -52,16 +58,7 @@ setopt HIST_FIND_NO_DUPS
 alias history='history -E'
 
 export EDITOR='nvim'
-rangercd () {
-    tmp="$(mktemp)"
-    ranger --choosedir="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-} # source: https://www.reddit.com/r/ranger/comments/bngtqt/comment/ig8ux7c
-alias ranger="rangercd"
+source $HOME/.bin/startup_script/*
 
 # Turn off all beeps
 unsetopt BEEP

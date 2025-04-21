@@ -3,7 +3,7 @@
 source variables
 
 for d in $DIRECTORIES; do
-	if [ ! -d $d ]; then
+	if [ ! -d "$d" ]; then
 		mkdir "$d"
 	fi
 done
