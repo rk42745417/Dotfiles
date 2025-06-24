@@ -2,6 +2,6 @@ FILES="vimrc zshrc zprofile bashrc bash_profile gitconfig"
 
 NEWSBOAT_FILES=""
 
-CONFIG_FILES=""
+CONFIG_FILES="nvim ranger"
 
 DIRECTORIES="nvim ranger"
