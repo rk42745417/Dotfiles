@@ -15,7 +15,9 @@ local function my_on_attach(bufnr)
 end
 
 require("nvim-tree").setup({
-  sort_by = "case_sensitive",
+  sort = {
+    sorter = "case_sensitive",
+  },
   view = {
     width = 30,
   },
@@ -25,7 +27,6 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
-  on_attach = my_on_attach,
 })
 
 -- Open Nvim Tree and put the cursor back in the current window

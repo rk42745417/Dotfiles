@@ -32,6 +32,11 @@ bindkey -e
 
 # ****************************************************************************************************
 
+export PYTHONPYCACHEPREFIX="$HOME/.cache/__pycache__"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 alias tmux="TERM=xterm-256color tmux"
 export PATH="$HOME/Packages/image/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
