@@ -21,11 +21,11 @@ vim.keymap.set("n", "<leader>pp", [["+p]])
 -- Cpp keymaps
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = 'cpp',
-	command = 'nnoremap <F8> :w <bar> !g++ -std=gnu++17 % -o %:r -O2<CR>'
+	command = 'nnoremap <F8> :w <bar> !g++ -std=gnu++23 % -o %:r -O2<CR>'
 })
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = 'cpp',
-	command = 'nnoremap <F9> :w <bar> !g++ -std=gnu++17 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT<CR>'
+	command = 'nnoremap <F9> :w <bar> !g++ -std=gnu++23 % -o %:r -Wall -Wextra -Wconversion -Wshadow -Wfatal-errors -fsanitize=undefined -fsanitize=address -g -DEMT<CR>'
 })
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = 'cpp',
