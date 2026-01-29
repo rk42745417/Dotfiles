@@ -8,8 +8,8 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
         "mfussenegger/nvim-lint",
         "rshkarin/mason-nvim-lint",

@@ -56,6 +56,8 @@ alias vm='mv'
 alias difi='diff'
 alias mkdri='mkdir'
 alias rmdri='rmdir'
+
+alias pn='pnpm'
 bindkey "^[j" history-beginning-search-forward
 bindkey "^[k" history-beginning-search-backward
 setopt EXTENDED_HISTORY
@@ -108,14 +110,16 @@ zplug load
 # plugin configurations
 GEOMETRY_PLUGIN_HYDRATE_INTERVAL=40  # interval in minutes
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# fnm
+FNM_PATH="/home/jikuai/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+# fnm completion
+eval "$(fnm env --version-file-strategy=recursive --use-on-cd --shell zsh)" > /dev/null
 
 # ****************************************************************************************************
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
